@@ -1,0 +1,1 @@
+# my config for setting up a new pc
