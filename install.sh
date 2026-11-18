@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dotfiles installer
-# creates symlinks from this repo to where each tool expects its config
+# installs everything in the Brewfile, then symlinks configs into place
 
 set -e
 
@@ -26,6 +26,22 @@ link_file() {
     ok "linked $dst -> $src"
 }
 
+# --- homebrew ---
+# apple silicon puts brew in /opt/homebrew, which might not be on PATH yet
+if ! command -v brew >/dev/null 2>&1 && [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+    warn "homebrew isn't installed. install it with:"
+    warn '  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+    warn "then run ./install.sh again"
+    exit 1
+fi
+
+info "installing stuff from the Brewfile"
+brew bundle --file="$DOTFILES/Brewfile"
+
 # --- zsh ---
 info "setting up zsh"
 link_file "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
@@ -37,14 +53,6 @@ link_file "$DOTFILES/ghostty/config" "$HOME/.config/ghostty/config"
 # --- vs code ---
 info "setting up vs code"
 link_file "$DOTFILES/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
-
-# --- font ---
-if ! fc-list 2>/dev/null | grep -qi "DM Mono" && ! system_profiler SPFontsDataType 2>/dev/null | grep -qi "DM Mono"; then
-    warn "dm mono font not found — install it:"
-    warn "  brew install --cask font-dm-mono"
-else
-    ok "dm mono font detected"
-fi
 
 echo ""
 ok "done! restart your shell or run: source ~/.zshrc"
