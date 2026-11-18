@@ -1,0 +1,15 @@
+brew "git"
+
+cask "ghostty"
+cask "brave-browser"
+cask "raycast"
+cask "obsidian"
+cask "spotify"
+cask "discord"
+cask "visual-studio-code"
+cask "font-dm-mono"
+
+vscode "esbenp.prettier-vscode"
+vscode "PKief.material-icon-theme"
+vscode "GitHub.github-vscode-theme"
+vscode "formulahendry.code-runner"
