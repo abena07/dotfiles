@@ -8,6 +8,7 @@ cask "spotify"
 cask "discord"
 cask "visual-studio-code"
 cask "font-dm-mono"
+cask "logi-options+"
 
 vscode "esbenp.prettier-vscode"
 vscode "PKief.material-icon-theme"

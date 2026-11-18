@@ -24,7 +24,9 @@ last thing it runs is `macos.sh`, which sends screenshots to the clipboard and k
 
 ## brewfile
 
-apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, vs code, dm mono, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
+apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, vs code, dm mono, logi options+, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
+
+logi options+ is for the mx master. after it installs, open it once and allow the accessibility and bluetooth permissions it asks for, otherwise the custom buttons and gestures won't work.
 
 ## what's included
 
