@@ -18,7 +18,7 @@ my configs for setting up a new mac. configs live in this repo and get symlinked
    ./install.sh
    ```
 
-the script installs everything in the `Brewfile` first, then symlinks the configs.
+the script installs everything in the `Brewfile` first, then symlinks the configs. at the end it makes an ssh key if there isn't one, copies the public key, and switches this repo's remote to ssh. paste the key into github > settings > ssh and gpg keys before you push anything.
 
 ## brewfile
 
@@ -29,6 +29,7 @@ apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, b
 | folder | config | target location |
 |--------|--------|-----------------|
 | `zsh/` | `.zshrc` — shell aliases and color settings | `~/.zshrc` |
+| `git/` | `.gitconfig` — name, noreply email, main as default branch | `~/.gitconfig` |
 | `ghostty/` | `config` — github dark theme, dm mono font, 16-color palette | `~/.config/ghostty/config` |
 | `vscode/` | `settings.json` — prettier, material icons, github dark theme | `~/Library/Application Support/Code/User/settings.json` |
 
@@ -39,10 +40,19 @@ the install script symlinks each config to where the tool expects it. existing f
 ```
 ~/dotfiles/ghostty/config       →  ~/.config/ghostty/config
 ~/dotfiles/zsh/.zshrc           →  ~/.zshrc
+~/dotfiles/git/.gitconfig       →  ~/.gitconfig
 ~/dotfiles/vscode/settings.json →  ~/Library/Application Support/Code/User/settings.json
 ```
 
 edit files in this repo, commit, and the symlinks pick up changes automatically.
+
+## secrets
+
+this repo is public, so no keys, tokens or passwords in here. put them in `~/.zshrc.local` instead, `.zshrc` loads it if it exists. it's in `.gitignore` too, just in case.
+
+```sh
+export SOME_API_KEY="..."
+```
 
 ## adding a new config
 
@@ -59,10 +69,12 @@ edit files in this repo, commit, and the symlinks pick up changes automatically.
 ```
 dotfiles/
 ├── Brewfile                # apps, fonts, vs code extensions
-├── install.sh              # runs brew bundle, then symlinks everything
+├── install.sh              # brew bundle, symlinks, ssh key
 ├── readme.md
 ├── ghostty/
 │   └── config              # ghostty terminal config
+├── git/
+│   └── .gitconfig          # git name, email, default branch
 ├── vscode/
 │   └── settings.json       # vs code settings
 └── zsh/
