@@ -2,13 +2,27 @@
 
 my configs for setting up a new mac. configs live in this repo and get symlinked into place — edit here, commit, and every machine stays in sync.
 
-## quick setup
+## new mac setup
 
-```sh
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-./install.sh
-```
+1. install [homebrew](https://brew.sh):
+   ```sh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+2. clone this repo:
+   ```sh
+   git clone https://github.com/abena07/dotfiles.git ~/dotfiles
+   ```
+3. run the install script:
+   ```sh
+   cd ~/dotfiles
+   ./install.sh
+   ```
+
+the script installs everything in the `Brewfile` first, then symlinks the configs.
+
+## brewfile
+
+apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, vs code, dm mono, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
 
 ## what's included
 
@@ -23,9 +37,9 @@ cd ~/dotfiles
 the install script symlinks each config to where the tool expects it. existing files get backed up to `*.backup` before being replaced.
 
 ```
-~/dotfiles/ghostty/config  →  ~/.config/ghostty/config
-~/dotfiles/zsh/.zshrc      →  ~/.zshrc
-~/dotfiles/vscode/settings →  ~/Library/Application Support/Code/User/settings.json
+~/dotfiles/ghostty/config       →  ~/.config/ghostty/config
+~/dotfiles/zsh/.zshrc           →  ~/.zshrc
+~/dotfiles/vscode/settings.json →  ~/Library/Application Support/Code/User/settings.json
 ```
 
 edit files in this repo, commit, and the symlinks pick up changes automatically.
@@ -40,28 +54,12 @@ edit files in this repo, commit, and the symlinks pick up changes automatically.
    ```
 4. commit and push
 
-## font
-
-ghostty and vs code both use [dm mono](https://fonts.google.com/specimen/DM+Mono). install it with:
-
-```sh
-brew install --cask font-dm-mono
-```
-
-## vs code extensions
-
-```sh
-code --install-extension esbenp.prettier-vscode
-code --install-extension PKief.material-icon-theme
-code --install-extension GitHub.github-vscode-theme
-code --install-extension formulahendry.code-runner
-```
-
 ## file structure
 
 ```
 dotfiles/
-├── install.sh              # symlinks everything into place
+├── Brewfile                # apps, fonts, vs code extensions
+├── install.sh              # runs brew bundle, then symlinks everything
 ├── readme.md
 ├── ghostty/
 │   └── config              # ghostty terminal config
