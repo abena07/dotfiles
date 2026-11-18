@@ -50,9 +50,28 @@ link_file "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 info "setting up ghostty"
 link_file "$DOTFILES/ghostty/config" "$HOME/.config/ghostty/config"
 
+# --- git ---
+info "setting up git"
+link_file "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
+
 # --- vs code ---
 info "setting up vs code"
 link_file "$DOTFILES/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+
+# --- ssh ---
+info "setting up ssh"
+if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
+    ssh-keygen -t ed25519 -C "62352130+abena07@users.noreply.github.com" -f "$HOME/.ssh/id_ed25519"
+    pbcopy < "$HOME/.ssh/id_ed25519.pub"
+    ok "new ssh key made and the public key is copied"
+    warn "paste it into github > settings > ssh and gpg keys > new ssh key"
+else
+    ok "ssh key already exists, skipping"
+fi
+
+# --- dotfiles remote ---
+git -C "$DOTFILES" remote set-url origin git@github.com:abena07/dotfiles.git
+ok "dotfiles remote is now git@github.com:abena07/dotfiles.git"
 
 echo ""
 ok "done! restart your shell or run: source ~/.zshrc"
