@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dotfiles installer
-# installs everything in the Brewfile, then symlinks configs into place
+# installs everything in the Brewfile, symlinks configs into place, then applies macos settings
 
 set -e
 
@@ -72,6 +72,10 @@ fi
 # --- dotfiles remote ---
 git -C "$DOTFILES" remote set-url origin git@github.com:abena07/dotfiles.git
 ok "dotfiles remote is now git@github.com:abena07/dotfiles.git"
+
+# --- macos settings ---
+info "applying macos settings"
+"$DOTFILES/macos.sh"
 
 echo ""
 ok "done! restart your shell or run: source ~/.zshrc"
