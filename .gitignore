@@ -1,0 +1,7 @@
+# secrets stay out of the repo
+.zshrc.local
+*.local
+id_*
+*.pem
+*.key
+.env
