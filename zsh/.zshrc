@@ -11,6 +11,5 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias activate='source venv/bin/activate'
 
-
-# git colors
-git config --global color.ui auto
+# secrets (api keys, tokens) go in ~/.zshrc.local, which never goes in the repo
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
