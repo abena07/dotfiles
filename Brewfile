@@ -6,6 +6,8 @@ cask "raycast"
 cask "obsidian"
 cask "spotify"
 cask "discord"
+cask "signal"
+cask "iina"
 cask "visual-studio-code"
 cask "font-dm-mono"
 

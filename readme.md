@@ -22,7 +22,7 @@ the script installs everything in the `Brewfile` first, then symlinks the config
 
 ## brewfile
 
-apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, vs code, dm mono, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
+apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, signal, iina, vs code, dm mono, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
 
 ## what's included
 
