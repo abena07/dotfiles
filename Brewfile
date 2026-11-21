@@ -9,6 +9,7 @@ cask "discord"
 cask "signal"
 cask "iina"
 cask "visual-studio-code"
+cask "claude-code"
 cask "font-dm-mono"
 
 vscode "esbenp.prettier-vscode"
