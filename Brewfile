@@ -11,6 +11,7 @@ cask "iina"
 cask "visual-studio-code"
 cask "claude-code"
 cask "font-dm-mono"
+cask "logi-options+"
 
 vscode "esbenp.prettier-vscode"
 vscode "PKief.material-icon-theme"

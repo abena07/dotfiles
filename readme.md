@@ -20,9 +20,13 @@ my configs for setting up a new mac. configs live in this repo and get symlinked
 
 the script installs everything in the `Brewfile` first, then symlinks the configs. at the end it makes an ssh key if there isn't one, copies the public key, and switches this repo's remote to ssh. paste the key into github > settings > ssh and gpg keys before you push anything.
 
+last thing it runs is `macos.sh`, which sends screenshots to the clipboard and keeps the desktop empty (no icons, no external disks or dmgs). you can run it on its own too.
+
 ## brewfile
 
-apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, signal, iina, vs code, dm mono, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
+apps, fonts and vs code extensions all live in the `Brewfile`. that's ghostty, brave, raycast, obsidian, spotify, discord, signal, iina, vs code, dm mono, logi options+, and my vs code extensions (prettier, material icons, github theme, code runner). to add something, put a line in there and run `brew bundle` again.
+
+logi options+ is for the mx master. after it installs, open it once and allow the accessibility and bluetooth permissions it asks for, otherwise the custom buttons and gestures won't work.
 
 ## what's included
 
@@ -70,6 +74,7 @@ export SOME_API_KEY="..."
 dotfiles/
 ├── Brewfile                # apps, fonts, vs code extensions
 ├── install.sh              # brew bundle, symlinks, ssh key
+├── macos.sh                # macos settings
 ├── readme.md
 ├── ghostty/
 │   └── config              # ghostty terminal config
